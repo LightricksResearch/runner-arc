@@ -6,8 +6,7 @@ on:
 
 jobs:
   docker_build_and_push:
-    name: Build and Push API Docker Image for develop
-    if: github.event.pull_request.merged == true && (github.base_ref == 'develop') && github.repository != 'LightricksResearch/comfyui_worker_serving'
+    name: Build and Push API Docker Image for runner
     runs-on: ubuntu-latest
     permissions:
       actions: write
