@@ -31,6 +31,13 @@ jobs:
           username: oauth2accesstoken
           password: ${{ steps.auth.outputs.access_token }}
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+    
+      - name: Set up Docker Buildx
+        continue-on-error: true
+        uses: docker/setup-buildx-action@v3.0.0
+
       - name: Build and Push API Docker Image
         uses: docker/build-push-action@v6
         with:
@@ -39,7 +46,5 @@ jobs:
           tags: |
            gcr.io/ltx-research/runner-arc:v0.0.1
           file: ./images/Dockerfile
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
