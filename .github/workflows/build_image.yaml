@@ -15,9 +15,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.base_ref }}
-          token: ${{ secrets.BOT_TOKEN }}
 
       - id: 'auth'
         name: 'Authenticate to Google Cloud'
