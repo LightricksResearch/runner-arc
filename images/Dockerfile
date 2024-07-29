@@ -13,7 +13,7 @@ RUN apt update -y && apt install curl unzip git git-lfs -y
 WORKDIR /actions-runner
 RUN export RUNNER_ARCH=${TARGETARCH} \
     && RUNNER_ARCH=x64 \
-    && https://github.com/actions/runner/releases/download/v2.318.0/actions-runner-osx-x64-2.318.0.tar.gz \
+    && curl -f -L -o runner.tar.gz https://github.com/actions/runner/releases/download/v2.318.0/actions-runner-osx-x64-2.318.0.tar.gz \
     && tar xzf ./runner.tar.gz \
     && rm runner.tar.gz
 
